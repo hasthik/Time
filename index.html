@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time</title>
+    <style>
+        body {
+            background-color: #D8DEE8;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        .circle {
+            background-color: #D8DEE8;
+            border-radius: 50%;
+            display: inline-block;
+            height: 8vw;
+            line-height: 8vw;
+            margin: 0 1vw;
+            text-align: center;
+            width: 8vw;
+            box-shadow: -5px 5px 10px rgba(194, 200, 209, 0.2), 5px -5px 10px rgba(194, 200, 209, 0.2), -5px -5px 10px rgba(238, 244, 255, 0.9), 5px 5px 13px rgba(194, 200, 209, 0.9), inset 1px 1px 2px rgba(238, 244, 255, 0.3), inset -1px -1px 2px rgba(194, 200, 209, 0.5);
+            font-size: 3vw;
+        }
+        .circle:hover {
+            background: #fff;
+            color: black;
+            box-shadow: -5px 5px 10px rgba(194, 200, 209, 0.2), 5px -5px 10px rgba(194, 200, 209, 0.2), -5px -5px 10px rgba(238, 244, 255, 0.9), 5px 5px 13px rgba(194, 200, 209, 0.9), inset 1px 1px 2px rgba(238, 244, 255, 0.3), inset -1px -1px 2px rgba(194, 200, 209, 0.5);
+            }
+         .center {
+             margin: 300px auto;
+         }
+    </style>
+</head>
+<body>
+    <div>
+        <p id="time">
+            <div class="center">
+                <span class="circle" id="hours1"></span>
+                <span class="circle" id="hours2"></span>
+                <span class="circle" id="minutes1"></span>
+                <span class="circle" id="minutes2"></span>
+                <span class="circle" id="seconds1"></span>
+                <span class="circle" id="seconds2"></span>
+                <span class="circle" id="ampm"></span>
+            </div>
+        </p>
+
+    </div>
+</body>
+<script>
+    let time = document.getElementById("time");
+    setInterval(() => {
+        let date = new Date();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+        let ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        hours1 = hours < 10 ? '0' : '1';
+        hours2 = hours < 10 ? hours : hours - 10;
+        minutes1 = minutes < 10 ? '0' : Math.floor(minutes / 10);
+        minutes2 = minutes < 10 ? minutes : minutes % 10;
+        seconds1 = seconds < 10 ? '0' : Math.floor(seconds / 10);
+        seconds2 = seconds < 10 ? seconds : seconds % 10;
+        document.getElementById("hours1").innerHTML = hours1;
+        document.getElementById("hours2").innerHTML = hours2;
+        document.getElementById("minutes1").innerHTML = minutes1;
+        document.getElementById("minutes2").innerHTML = minutes2;
+        document.getElementById("seconds1").innerHTML = seconds1;
+        document.getElementById("seconds2").innerHTML = seconds2;
+        document.getElementById("ampm").innerHTML = ampm;
+    }, 1000);
+</script>
+</html>
