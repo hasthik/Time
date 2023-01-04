@@ -22,7 +22,7 @@
             text-align: center;
             width: 8vw;
             box-shadow: -5px 5px 10px rgba(194, 200, 209, 0.2), 5px -5px 10px rgba(194, 200, 209, 0.2), -5px -5px 10px rgba(238, 244, 255, 0.9), 5px 5px 13px rgba(194, 200, 209, 0.9), inset 1px 1px 2px rgba(238, 244, 255, 0.3), inset -1px -1px 2px rgba(194, 200, 209, 0.5);
-            font-size: 3vw;
+            font-size: 3.5vw;
         }
         .circle:hover {
             background: #fff;
@@ -74,5 +74,21 @@
         document.getElementById("seconds2").innerHTML = seconds2;
         document.getElementById("ampm").innerHTML = ampm;
     }, 1000);
+    // if display size is less than 540 px, font size is increased and the seconds are removed
+    if (window.matchMedia("(max-width: 540px)").matches) {
+        for(let i = 0; i < document.getElementsByClassName("circle").length; i++) {
+            document.getElementsByClassName("circle")[i].style.fontSize = "6vw";
+            document.getElementsByClassName("circle")[i].style.height = "14vw";
+            document.getElementsByClassName("circle")[i].style.lineHeight = "14vw";
+            document.getElementsByClassName("circle")[i].style.width = "14vw";
+        }
+        // document.querySelector(".circle").style.fontSize = "8vw";
+        // document.querySelector(".circle").style.height = "16vw";
+        // document.querySelector(".circle").style.lineHeight = "16vw";
+        // document.querySelector(".circle").style.width = "16vw";
+
+        document.getElementById("seconds1").style.display = "none";
+        document.getElementById("seconds2").style.display = "none";
+    }
 </script>
 </html>
